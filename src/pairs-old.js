@@ -1,7 +1,9 @@
 function createApp(gameArea) {
   const field = document.querySelector('.game-area');
   const win = document.querySelector('.win');
+  // const lose = document.querySelector('.lose');
   const resetBtn = document.getElementById('resetBtn');
+  // const timerEl = document.querySelector('.timer');
 
   const gridField = [
     { id: '0', pair: '1' },
@@ -38,8 +40,14 @@ function createApp(gameArea) {
       block.append(pairLabel);
 
       block.addEventListener('click', () => {
-        block.classList.add('opened');
         const openedBlocks = document.querySelectorAll('.opened');
+
+        // if (openedBlocks.length === 0 || matchedBlocks.length === 0) {
+        //   startTimer();
+        // }
+
+        block.classList.add('opened');
+
         if (openedBlocks.length === 2) {
           if (
             openedBlocks[0].dataset.pair === openedBlocks[1].dataset.pair
@@ -81,6 +89,27 @@ function createApp(gameArea) {
       item.classList.remove('opened');
     });
     win.classList.remove('is-active');
-    resetBtn.textContent = 'Начать заново';
+    // lose.classList.remove('is-active');
   });
+
+  // function startTimer() {
+  //   window.time = 3;
+  //   timerEl.innerHTML = window.time;
+  //
+  //   if (window.timerID !== null || undefined) {
+  //     clearInterval(window.timerID);
+  //   }
+  //
+  //   window.timerID = setInterval(updateCountdown, 1000);
+  // }
+
+//   function updateCountdown() {
+//     window.time--;
+//     timerEl.innerHTML = window.time;
+//
+//     if (window.time <= 0) {
+//       lose.classList.add('is-active');
+//       clearInterval(window.timerID);
+//     }
+//   }
 }
